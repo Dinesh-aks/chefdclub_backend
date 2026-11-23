@@ -1,0 +1,15 @@
+/// Laravel table `cms`. Fixed single-record page slots by id: 1 = About Us,
+/// 2 = Privacy Policy, 3 = Terms & Conditions. Id 4 ("Diwali 2021") is a dead
+/// seasonal page with no live public route and is intentionally never exposed.
+model CmsPage {
+  id             Int       @id @default(autoincrement())
+  title          String?   @db.VarChar(255)
+  short          String?   @db.Text
+  description    String?   @db.LongText
+  banner         String?   @db.VarChar(255)
+  seoTitle       String?   @map("seo_title") @db.VarChar(500)
+  seoDescription String?   @map("seo_description") @db.VarChar(500)
+  addDate        DateTime? @default(now()) @map("add_date") @db.DateTime(0)
+
+  @@map("cms")
+}

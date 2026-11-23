@@ -1,0 +1,43 @@
+/// Laravel table `solutions` (admin-labeled "Menu Categories": Vegetarian,
+/// Non-Vegetarian, Wine Pairing). The legacy columns technical/installation/
+/// operational/benefits (dead JouleTap template leftovers) are mapped but unused.
+model MenuCategory {
+  id           Int       @id @default(autoincrement()) @db.UnsignedInt
+  name         String    @db.VarChar(255)
+  slug         String    @db.VarChar(255)
+  description  String    @db.LongText
+  technical    String?   @db.Text
+  installation String?   @db.Text
+  operational  String?   @db.Text
+  image        String    @db.VarChar(255)
+  banner       String?   @db.VarChar(255)
+  benefits     String?   @db.Text
+  status       String    @db.VarChar(11)
+  sort         Int       @default(0)
+  createdAt    DateTime? @map("created_at") @db.Timestamp(0)
+  updatedAt    DateTime? @map("updated_at") @db.Timestamp(0)
+
+  @@index([id], map: "id")
+  @@map("solutions")
+}
+
+/// Laravel table `products` (admin-labeled "Menu Photo Cards" — image + name only,
+/// no price/description). `menu` FKs MenuCategory.id (1 Veg, 2 Non-Veg, 3 Wine);
+/// `type` FKs the legacy fixed-4-row `type` lookup table (12 Breakfast, 13 Lunch,
+/// 14 Dinner, 15 Wine) — hardcoded in code, never has its own CRUD in Laravel either.
+model MenuCard {
+  id         Int       @id @default(autoincrement()) @db.UnsignedInt
+  menu       Int
+  type       Int
+  name       String    @db.VarChar(255)
+  slug       String    @db.VarChar(255)
+  banner     String?   @db.VarChar(255)
+  status     String    @db.VarChar(11)
+  sort       Int       @default(0)
+  showOnHome Int       @default(0) @map("show_on_home")
+  createdAt  DateTime? @map("created_at") @db.Timestamp(0)
+  updatedAt  DateTime? @map("updated_at") @db.Timestamp(0)
+
+  @@index([id], map: "id")
+  @@map("products")
+}

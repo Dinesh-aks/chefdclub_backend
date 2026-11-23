@@ -1,0 +1,25 @@
+# Copy these paths from this repo into the same location on the production server.
+# Root on server: <backend>/uploads/
+
+cms/blog/posts/10/hero/unleashing-three-common-myths-around-dining-culture-and-cuisine-part-i.png
+cms/blog/posts/10/inline/b61.jpeg
+cms/blog/posts/10/inline/b62.png
+cms/blog/posts/10/inline/b63.png
+cms/blog/posts/10/inline/b64.png
+cms/blog/posts/10/inline/b65.jpeg
+cms/blog/posts/5/hero/1647934746experiential-dining-defined-.jpeg
+cms/blog/posts/6/hero/1755858629grilled-saba-fish-chef-d-club-view.jpg
+cms/blog/posts/7/hero/the-truth-about-vegetarian-food-.jpeg
+cms/blog/posts/7/inline/br.jpeg
+cms/blog/posts/7/inline/cf.jpeg
+cms/blog/posts/7/inline/fi.jpeg
+cms/blog/posts/7/inline/gb.jpeg
+cms/blog/posts/8/hero/when-chefs-quote-proudly-they-visualize-meals-is-this-true-.jpeg
+cms/blog/posts/8/inline/b4.jpeg
+cms/blog/posts/8/inline/b4a.jpeg
+cms/blog/posts/9/hero/modern-indian-cuisine-crossing-the-chasm-.jpeg
+cms/blog/posts/9/inline/b5.jpeg
+cms/blog/posts/9/inline/b5.png
+cms/blog/posts/9/inline/b51.jpeg
+cms/blog/posts/9/inline/b52.jpeg
+cms/blog/posts/9/inline/b53.jpeg

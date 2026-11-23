@@ -1,0 +1,261 @@
+/// Legacy table `about_us_gallery`
+model AboutUsGallery {
+  id    Int     @id @default(autoincrement())
+  image String? @db.VarChar(255)
+
+  @@map("about_us_gallery")
+}
+
+/// Legacy table `battery`
+model Battery {
+  id         Int     @id @default(autoincrement())
+  model      String? @db.VarChar(255)
+  voltage    String? @db.VarChar(255)
+  capacity   String? @db.VarChar(255)
+  size       String? @db.VarChar(255)
+  c_rating   String? @db.VarChar(255)
+  length     String? @db.VarChar(255)
+  breadth    String? @db.VarChar(255)
+  height     String? @db.VarChar(255)
+  life_cycle String? @db.VarChar(255)
+
+  @@map("battery")
+}
+
+/// Legacy table `battery_manage`
+model BatteryManage {
+  id             Int     @id @default(autoincrement())
+  model          String? @db.VarChar(255)
+  voltage        String? @db.VarChar(255)
+  series         String? @db.VarChar(255)
+  communication  String? @db.VarChar(255)
+  current_rating String? @db.VarChar(255)
+  application    String? @db.VarChar(255)
+
+  @@map("battery_manage")
+}
+
+/// Legacy table `career_cv`
+model CareerCv {
+  id           Int      @id @default(autoincrement())
+  name         String   @db.VarChar(255)
+  email        String   @db.VarChar(255)
+  mobile       String   @db.VarChar(255)
+  cover_letter String   @db.VarChar(255)
+  cv           String   @db.VarChar(255)
+  add_date     DateTime @default(now()) @db.Timestamp(0)
+
+  @@map("career_cv")
+}
+
+/// Legacy table `cell`
+model Cell {
+  id             Int     @id @default(autoincrement())
+  model          String? @db.VarChar(255)
+  voltage        String? @db.VarChar(255)
+  capacity       String? @db.VarChar(255)
+  size           String? @db.VarChar(255)
+  voltage_high   String? @db.VarChar(255)
+  voltage_low    String? @db.VarChar(255)
+  power_capacity String? @db.VarChar(255)
+  life_cycle     String? @db.VarChar(255)
+
+  @@map("cell")
+}
+
+/// Legacy table `certificate`
+model Certificate {
+  id          Int    @id @default(autoincrement())
+  title       String @db.VarChar(255)
+  image       String @db.VarChar(255)
+  description String @db.Text
+  from        String @db.VarChar(255)
+
+  @@map("certificate")
+}
+
+/// Legacy table `customer`
+model Customer {
+  id         Int       @id @default(autoincrement()) @db.UnsignedInt
+  name       String    @db.VarChar(255)
+  email      String    @db.VarChar(255)
+  phone      String    @db.VarChar(255)
+  status     String    @default("1") @db.VarChar(11)
+  created_at DateTime? @db.Timestamp(0)
+  updated_at DateTime? @db.Timestamp(0)
+
+  @@index([id], map: "id")
+  @@map("customer")
+}
+
+/// Legacy table `extra`
+model Extra {
+  id       Int     @id @default(autoincrement())
+  solution String? @db.LongText
+  product  String? @db.LongText
+  career   String  @db.Text
+
+  @@map("extra")
+}
+
+/// Legacy table `google_reviews`
+model GoogleReviews {
+  id     Int     @id @default(autoincrement())
+  name   String? @db.VarChar(255)
+  image  String? @db.Text
+  review String? @db.Text
+  star   Int?
+  sort   Int?
+  link   String? @db.VarChar(255)
+
+  @@map("google_reviews")
+}
+
+/// Legacy table `happy_users`
+model HappyUsers {
+  id          Int    @id @default(autoincrement())
+  name        String @db.VarChar(255)
+  designation String @db.VarChar(255)
+  message     String @db.Text
+  image       String @db.VarChar(255)
+
+  @@map("happy_users")
+}
+
+/// Legacy table `home_slider_text`
+model HomeSliderText {
+  id          Int    @id @default(autoincrement())
+  slider_text String @db.Text
+  banner      String @db.VarChar(255)
+
+  @@map("home_slider_text")
+}
+
+/// Legacy table `newsletter`
+model Newsletter {
+  id       Int      @id @default(autoincrement())
+  name     String   @db.VarChar(255)
+  email    String   @db.VarChar(255)
+  add_date DateTime @default(now()) @db.Timestamp(0)
+
+  @@map("newsletter")
+}
+
+/// Legacy table `our_features`
+model OurFeatures {
+  id          Int     @id @default(autoincrement())
+  feature     String  @db.VarChar(255)
+  description String  @db.Text
+  image       String? @db.VarChar(255)
+
+  @@map("our_features")
+}
+
+/// Legacy table `permissions`
+model Permissions {
+  id   Int    @id @default(autoincrement())
+  name String @db.VarChar(100)
+
+  @@map("permissions")
+}
+
+/// Legacy table `photo_like`
+model PhotoLike {
+  id         Int      @id @default(autoincrement())
+  photo_id   Int
+  user_id    Int
+  like       Int
+  un_like    Int
+  ip_address String   @db.VarChar(55)
+  date       DateTime @db.Date
+  add_date   DateTime @db.DateTime(0)
+
+  @@map("photo_like")
+}
+
+/// Legacy table `reservation_rating`
+model ReservationRating {
+  id             Int      @id @default(autoincrement())
+  reservation_id Int      @default(0)
+  name           String?  @db.VarChar(100)
+  email          String?  @db.VarChar(250)
+  phone          String?  @db.VarChar(20)
+  rating         Int
+  review         String   @db.Text
+  link           String?  @db.Text
+  status         Int
+  add_date       DateTime @db.DateTime(0)
+
+  @@index([reservation_id], map: "reservation_id")
+  @@map("reservation_rating")
+}
+
+/// Legacy table `slider`
+model Slider {
+  id     Int    @id @default(autoincrement())
+  image  String @db.VarChar(255)
+  text   String @db.VarChar(255)
+  desc   String @db.Text
+  sort   Int?
+  status Int    @default(0)
+
+  @@map("slider")
+}
+
+/// Legacy table `stats`
+model Stats {
+  id                Int     @id @default(autoincrement())
+  customers         String? @db.VarChar(255)
+  generated_monthly String? @db.VarChar(255)
+  projects          String? @db.VarChar(255)
+  company           String? @db.VarChar(255)
+  description       String? @db.Text
+
+  @@map("stats")
+}
+
+/// Legacy table `type`
+model Type {
+  id   Int    @id @default(autoincrement())
+  name String @db.VarChar(255)
+
+  @@map("type")
+}
+
+/// Legacy table `users`
+model Users {
+  id            Int      @id @default(autoincrement())
+  name          String   @db.VarChar(100)
+  email         String   @db.VarChar(250)
+  password      String   @db.VarChar(150)
+  text_password String?  @db.VarChar(150)
+  phone         String   @db.VarChar(20)
+  status        Int
+  add_date      DateTime @db.DateTime(0)
+
+  @@map("users")
+}
+
+/// Legacy table `video_like`
+model VideoLike {
+  id         Int      @id @default(autoincrement())
+  video_id   Int
+  user_id    Int
+  like       Int
+  un_like    Int
+  ip_address String   @db.VarChar(55)
+  date       DateTime @db.Date
+  add_date   DateTime @db.DateTime(0)
+
+  @@index([user_id], map: "user_id")
+  @@map("video_like")
+}
+
+/// Legacy table `welcome_text`
+model WelcomeText {
+  id      Int    @id @default(autoincrement())
+  title   String @db.VarChar(255)
+  message String @db.Text
+
+  @@map("welcome_text")
+}

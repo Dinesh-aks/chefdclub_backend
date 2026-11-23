@@ -1,0 +1,12 @@
+/// Laravel table `contact_us`
+model ContactUs {
+  id      Int      @id @default(autoincrement())
+  name    String   @db.VarChar(255)
+  email   String   @db.VarChar(255)
+  mobile  String?  @db.VarChar(255)
+  subject String?  @db.VarChar(255)
+  message String   @db.Text
+  addDate DateTime @default(now()) @map("add_date") @db.Timestamp(0)
+
+  @@map("contact_us")
+}

@@ -1,0 +1,59 @@
+/// Laravel table `blog_category`.
+model BlogCategory {
+  id        Int      @id @default(autoincrement())
+  category  String   @db.VarChar(255)
+  slug      String   @db.VarChar(255)
+  status    Int
+  sort      Int
+  updatedAt DateTime @default(now()) @map("updated_at") @db.DateTime(0)
+
+  @@map("blog_category")
+}
+
+/// Laravel table `blog`. `publishDate` is legacy free-text, not a real date column —
+/// kept as a string, never coerced. `catId` FKs BlogCategory.id.
+model BlogPost {
+  id             Int      @id @default(autoincrement())
+  catId          Int      @map("cat_id")
+  author         String   @db.VarChar(255)
+  title          String   @db.VarChar(255)
+  slug           String   @db.VarChar(255)
+  description    String   @db.Text
+  image          String?  @db.VarChar(255)
+  video          String?  @db.VarChar(255)
+  publishDate    String   @map("publish_date") @db.VarChar(255)
+  seoTitle       String?  @map("seo_title") @db.VarChar(250)
+  seoDescription String?  @map("seo_description") @db.VarChar(250)
+  status         Int
+  updatedAt      DateTime @default(now()) @map("updated_at") @db.DateTime(0)
+
+  @@map("blog")
+}
+
+/// Laravel table `blog_view` — read-only visit tracking, not managed content.
+/// Modeled only so the admin can show a view count per post.
+model BlogView {
+  id        Int      @id @default(autoincrement())
+  blogId    Int      @map("blog_id")
+  ipAddress String   @map("ip_address") @db.VarChar(80)
+  noOfView  Int      @map("no_of_view")
+  viewDate  DateTime @map("view_date") @db.Date
+
+  @@map("blog_view")
+}
+
+/// Laravel table `blog_like` — read-only like/unlike tracking, not managed content.
+/// Modeled only so the admin can show a like count per post.
+model BlogLike {
+  id        Int      @id @default(autoincrement())
+  blogId    Int      @map("blog_id")
+  userId    Int      @map("user_id")
+  like      Int
+  unlike    Int      @map("un_like")
+  ipAddress String   @map("ip_address") @db.VarChar(55)
+  date      DateTime @db.Date
+  addDate   DateTime @map("add_date") @db.DateTime(0)
+
+  @@index([userId], map: "user_id")
+  @@map("blog_like")
+}

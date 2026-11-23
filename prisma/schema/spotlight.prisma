@@ -1,0 +1,19 @@
+/// New table (not from Laravel). Dish photo cards on the homepage: a photo with a title, a small
+/// tag line and an optional badge. `placement` says where it shows: "hero" (beside the headline) or
+/// "story" (the two photos in the dining story section). Managed from the admin CMS.
+model HomeSpotlight {
+  id        Int      @id @default(autoincrement())
+  title     String   @db.VarChar(255)
+  tag       String?  @db.VarChar(255)
+  badge     String?  @db.VarChar(50)
+  placement String   @default("hero") @db.VarChar(20)
+  image     String?  @db.VarChar(255)
+  /// Alt text for the image (screen readers, SEO); the website falls back to the title when empty.
+  alt       String?  @db.VarChar(255)
+  status    Boolean  @default(true)
+  sort      Int      @default(0)
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @updatedAt @map("updated_at")
+
+  @@map("home_spotlight")
+}

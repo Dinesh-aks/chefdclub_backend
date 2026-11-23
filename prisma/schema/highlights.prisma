@@ -1,0 +1,15 @@
+/// Laravel table `industry` (admin-labeled "Homepage Highlights"/promo cards).
+/// `status` is stored as a legacy string "0"/"1", not a real boolean column.
+model Highlight {
+  id          Int       @id @default(autoincrement()) @db.UnsignedInt
+  name        String?   @db.Text
+  description String?   @db.Text
+  image       String?   @db.VarChar(255)
+  status      String?   @db.VarChar(11)
+  sort        Int?      @default(0)
+  createdAt   DateTime? @map("created_at") @db.Timestamp(0)
+  updatedAt   DateTime? @map("updated_at") @db.Timestamp(0)
+
+  @@index([id], map: "id")
+  @@map("industry")
+}

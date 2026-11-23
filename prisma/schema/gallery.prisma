@@ -1,0 +1,23 @@
+/// Laravel table `clients` (admin-labeled "Photo Gallery"). `type` is a dish/category
+/// filter: 0 = All, 1 = Vegetarian, 2 = Non-Vegetarian.
+model GalleryPhoto {
+  id    Int     @id @default(autoincrement())
+  name  String? @db.VarChar(255)
+  image String  @db.VarChar(255)
+  type  Int     @default(0)
+
+  @@map("clients")
+}
+
+/// Laravel table `video` (admin-labeled "Video Gallery"). `youtubeId` may hold a plain
+/// YouTube embed URL or, for legacy rows, a full Facebook <iframe> embed — normalize in
+/// the repository, don't assume a bare ID. `type`: 0 All, 1 Veg, 2 Non-Veg, 3 Private Dining.
+model GalleryVideo {
+  id        Int      @id @default(autoincrement())
+  youtubeId String   @map("youtube_id") @db.Text
+  type      Int      @default(0)
+  addDate   DateTime @default(now()) @map("add_date") @db.DateTime(0)
+
+  @@index([type], map: "type")
+  @@map("video")
+}

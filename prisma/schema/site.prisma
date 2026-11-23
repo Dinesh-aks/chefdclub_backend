@@ -1,0 +1,23 @@
+/// Laravel table `social_media`. `updatedDate` maps to the legacy column's actual
+/// (typo'd) name `updatd_date`.
+model SocialLink {
+  id          Int      @id @default(autoincrement())
+  link        String   @db.VarChar(255)
+  icon        String   @db.VarChar(255)
+  updatedDate DateTime @default(now()) @map("updatd_date") @db.DateTime(0)
+
+  @@map("social_media")
+}
+
+/// New table (not from Laravel). Public site contact info, deliberately decoupled
+/// from the `Admin` login record — Laravel reused the admin user's own email/mobile
+/// for public display, coupling site contact info to login credentials. Single row,
+/// id fixed to 1.
+model SiteSettings {
+  id      Int     @id @default(1)
+  email   String? @db.VarChar(255)
+  phone   String? @db.VarChar(50)
+  address String? @db.VarChar(500)
+
+  @@map("site_settings")
+}

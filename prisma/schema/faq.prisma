@@ -1,0 +1,12 @@
+/// Laravel table `faq`. `menu` is the legacy category id (1 = Veg, 2 = Non-Veg,
+/// 3 = Wine Pairing); `status` is a 0/1 published flag.
+model Faq {
+  id       Int     @id @default(autoincrement())
+  question String? @map("text") @db.Text
+  answer   String? @map("desc") @db.Text
+  sort     Int     @default(1)
+  status   Int     @default(1)
+  menu     Int     @default(1)
+
+  @@map("faq")
+}

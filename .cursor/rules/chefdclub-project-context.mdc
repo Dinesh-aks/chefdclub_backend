@@ -1,0 +1,14 @@
+---
+description: Chefdclub migration intent, paths, and delivery approach (Laravel → Next + Node)
+alwaysApply: true
+---
+
+# Chefdclub project context
+
+Read `PROJECT_BRIEF.md` in this repo for full detail.
+
+- **Migration:** Laravel 5.8 site → **Next.js** (public website + modern admin) + **Node/Express/Prisma/MySQL** (all APIs). Same **features and existing data**; **new UI** only.
+- **Paths:** Laravel `E:\chefdclub\laravel_code` · Frontend `E:\chefdclub\code\chefdclub_frontend` · Backend `E:\chefdclub\code\chefdclub_backend`.
+- **Backend layout:** Modular monolith, `src/modules/<feature>/` with routes → controller → service → repository (`ARCHITECTURE.md`).
+- **Data:** Legacy MySQL from Laravel matters. Do not reset/drop legacy tables with Prisma without an explicit plan. Align Prisma to real tables or migrate data deliberately.
+- **Delivery:** Vertical slices (feature + API + UI), not whole-backend-first or mock-only website.
