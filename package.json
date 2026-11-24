@@ -5,11 +5,11 @@
   "main": "dist/server.js",
   "scripts": {
     "dev": "tsx watch src/server.ts",
-    "build": "tsc && node scripts/copy-generated.js",
+    "build": "prisma generate && tsc && node scripts/copy-generated.js",
     "start": "node dist/server.js",
     "lint": "eslint \"src/**/*.ts\"",
     "prisma:generate": "prisma generate",
-    "prisma:migrate": "prisma migrate dev"
+    "prisma:migrate:deploy": "prisma migrate deploy"
   },
   "repository": {
     "type": "git",
