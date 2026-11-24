@@ -55,7 +55,7 @@ prisma/
 └── schema/           # Multi-file Prisma schema: base.prisma (datasource + generator),
                       # one file per feature (blog, menu, ...), legacy-unused.prisma
 
-prisma7.config.ts     # Prisma 7 config (schema path, migrations path, datasource URL)
+prisma.config.ts     # Prisma 7 config (schema path, migrations path, datasource URL)
 ```
 
 ### Inside a feature module

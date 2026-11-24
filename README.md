@@ -39,7 +39,7 @@ src/
 prisma/
 └── schema/            # Multi-file schema: base.prisma + one file per feature
 
-prisma7.config.ts        # Prisma 7 CLI config (migrations, `DATABASE_URL`)
+prisma.config.ts        # Prisma 7 CLI config (migrations, `DATABASE_URL`)
 ```
 
 See `docs/ARCHITECTURE.md` for module layout and conventions. Laravel parity checklist: `docs/LARAVEL_INVENTORY.md`.

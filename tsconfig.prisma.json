@@ -9,5 +9,5 @@
     "types": ["node"],
     "noEmit": true
   },
-  "include": ["prisma7.config.ts"]
+  "include": ["prisma.config.ts"]
 }
